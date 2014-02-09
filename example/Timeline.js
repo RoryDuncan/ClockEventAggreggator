@@ -127,6 +127,8 @@ var Timeline = function(args) {
           
           // there is a reference to _this_ inside of loop,
           // so sending the loop itself as context is enough.
+          loop.calledAt.push(now);
+          loop.now = now;
           loop.fn.apply(loop, loop.args);
           loop.lastCalled = now;
           loop.calls++; 
@@ -212,7 +214,7 @@ var Timeline = function(args) {
     if (!uniqueName) return this;
 
     var self = this,
-        defaults = { "start": ~~elapsedSeconds, "stop": Infinity, "interval": 9999, "maxIntervals": Infinity },
+        defaults = { "start": ~~elapsedSeconds, "stop": Infinity, "interval": 9999, "maxIntervals": Infinity, "duration": 0, "calledAt": [] },
         required = { "name":uniqueName, "fn": fn, "calls": 0, "parent":self, "args": args || [] };
 
     // the loop object
@@ -221,9 +223,11 @@ var Timeline = function(args) {
       extend(this, defaults, required);
       // the check to determine if the loop is called
       this.check = function(time) {
-        var start = this.start;
-        var interval = this.interval;
-        if ( (time - start) % interval === 0 ) return true;
+        var start = this.start,
+            interval = this.interval,
+            duration = this.duration;
+
+        if ( ( (time  -  start) )  % (interval + duration) === 0 ) return true;
         else return false;
       };
 
@@ -317,8 +321,18 @@ window.timeline = timeline; // for pausing in the console
 timeline.at(3, function() { console.log("3 seconds of elapsed time."); });
 
 // timed loop test
-var test = function(x, y, z){ console.count("loop test");
-console.log(x,y,z) };
+var test = function(){
+  console.log( "called at " + this.now + " seconds.");
+};
+var times = {
+  "start": 2,
+  "interval": 5,
+  "stop": 10,
+  "maxIntervals":3,
+  "duration": 2
+};
 
-console.log ( timeline.loop("test", test).for({"interval": 5, "maxIntervals":3}) );
+timeline.loop("test", test).for( times );
+
+
 

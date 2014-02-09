@@ -120,10 +120,10 @@ var Timeline = function(args) {
 
       var loop = events.loops[ key ]
 
-
       if (loop.check(now) &&          // Check whether the loop should fire at the current time
           loop.lastCalled !== now &&  // Check if it has already fired during this second
-          loop.start <= now) {        // Check if it is 'allowed' to start.
+          loop.start <= now &&        // Check if it is 'allowed' to start.
+          loop.delete === false) {    // Check if it is to be deleted
           
           // there is a reference to _this_ inside of loop,
           // so sending the loop itself as context is enough.
@@ -134,7 +134,7 @@ var Timeline = function(args) {
           loop.calls++; 
       }
       // check whether it has expired
-      if (loop.stop === now || loop.calls === loop.maxIntervals ) {
+      if (loop.stop === now || loop.calls === loop.maxIntervals || loop.delete === true) {
         // put it in the box where bad loops go.
         expired.push( key );
       }
@@ -146,6 +146,7 @@ var Timeline = function(args) {
       delete events.loops[name];
     }
   };
+
 
   /* Bindings */
 
@@ -235,6 +236,8 @@ var Timeline = function(args) {
         extend(this, options);
         return this.parent;
       };
+
+      this.delete = false;
       return this;
     };
     var l = new Loop();
@@ -284,17 +287,27 @@ var Timeline = function(args) {
 
   this.add = function(){};
 
-  this.remove = function(eventName) {
-    if (events.nominal[eventName] === undefined) return {"removed":false, "ctx": this};
-    else delete events.nominal[eventName];
+  this.remove = function(event) {
 
-    return {"removed":true, "ctx": this};
+    if (typeof event === "number") {
+
+      if (events.ordinal[event] === undefined) return {"removed":false, "ctx": this};
+
+      delete events.ordinal[event];
+      return {"removed":true, "ctx": this};
+    }
+
+    if (typeof event === "string") {
+
+      if (events.nominal[eventName] === undefined) return {"removed":false, "ctx": this};
+
+      delete events.nominal[eventName];
+      return {"removed":true, "ctx": this};
+    }
+   
   };
   
-  this.push = function(){};
 
-  this.pop = function(){};
-  
   
   /* debug */
   this.debug = false;

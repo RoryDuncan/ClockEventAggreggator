@@ -272,7 +272,8 @@ var Timeline = function(args) {
   };
 
   this.resume = function() {
-    running=true;
+    if (running === true) return this;
+    running = true;
     this.tick();
     return this;
   };
@@ -310,7 +311,7 @@ var Timeline = function(args) {
 
   
   /* debug */
-  this.debug = false;
+  this.debug = true;
   this.log = function() {
 
     console.clear();

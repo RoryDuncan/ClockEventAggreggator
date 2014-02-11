@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Documentation </title>
+
+<style type="text/css">
+	
+	body {
+		margin: 0 0;
+		font-family: "Helvetica", "Arial", sans-serif;
+		background-color: #ddd;
+	}
+	.sections {
+		border-bottom:1px solid #ccc;
+		position:fixed;
+		left:0px;
+		top:0px;
+		width: 300px;
+		background-color: #fff;
+		font-family:  "Helvetica", "Arial", sans-serif;
+		font-weight: lighter;
+
+
+	}
+	.sections h4 {
+		color: #000;
+		font-weight: 500;
+		border-bottom:1px solid #ccc; 
+		background-color: #fff;
+		margin: 0 auto; 
+		padding: 15px 5px; 
+		text-align:center;
+		font-family: "Helvetica Neue", "Helvetica", sans-serif;
+		font-size: 1.5em;
+	}
+	
+	.sections ol {padding: 0 0; margin: 0 0;}
+
+	.sections ol li {
+		padding:5px 5px 5px 30px;
+		font-family:"Arial"
+	}
+
+	.sections ol li.label {
+		font-family: "Helvetica Neue", "Helvetica", sans-serif;
+		font-size: 1.2em;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		text-align:left;
+		color: #000;
+		background-color: #fff !important;
+		padding: 10px 10px;
+	}
+
+
+
+	.sections ol li {
+		background-color: #f5f5f5;
+	}
+
+	.sections ol li:nth-of-type(2n) {
+		background-color: #eee;
+	}
+
+	.wrapper {
+		border-left:1px solid #ccc;
+		margin: 0 auto 0 300px;
+		max-width:1000px;
+		background-color:#fff;
+	}
+
+	p {padding-left:25px; color: #555;}
+	
+	.red {
+		font-size:1.2em;
+		color: #c44;
+		font-family: monospace;
+		font-weight:bolder;
+	}
+
+	div.example {
+		white-space: pre-line;
+		background-color: #ffe; 
+		color: #000; 
+		padding: 4px 25px;
+		font-family: monospace ;
+	}
+
+	div.example .var {color: #800; font-weight:900;}
+	.type { color: #22f; font-weight:bold; font-size:1.2em;}
+
+	.code {font-family: monospace; font-size:1.2em;}
+	ol.unstyled {}
+	ol.unstyled li {
+
+	}
+
+	.section {
+		padding: 50px 50px;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.section h1 {
+		font-family: "Helvetica Neue", "Helvetica", sans-serif;
+		font-weight: lighter;
+		font-size:3em;
+	}
+
+	.section h2 {
+		background-color:#0aa;
+		padding: 9px 18px;
+		border-radius: 3px;
+		color: #fff;
+	}
+
+	.doge a:nth-of-type(3n+1):before {content:"wow ";}
+
+
+	.doge *:nth-of-type(2n):before {
+	 	display:inline;
+
+	 	/*font-family: cursive !important;*/
+		content:"wow ";
+	}
+
+
+	.doge *:nth-of-type(3n):after {
+		display: inline-block;
+
+		/*font-family: cursive !important;*/
+		content:" wow  ";
+	}
+
+	.arg {
+		padding: 10px 10px;
+		font-size: 1.2em;
+	}
+
+	</style>
+
+	<script type="text/javascript">
+	var dogefy = function(){
+		if (document.body.className === "doge") document.body.className = "";
+		else document.body.className = "doge";
+	};
+	</script>
+
+</head>
+<body>
+	<div class="sections">
+		<h4> Sections </h4>
+		<ol class="unstyled">
+
+			<li><a href="#synopsis">Synopsis </a></li>			
+			<li><a href="#usage">Usage </a></li>
+			<li class="label"> Clock Methods </li>
+			<li><a href="#start">start() </a></li>
+			<li><a href="#pause">pause() </a></li>
+			<li><a href="#reset">reset() </a></li>
+			<li><a href="#resume">resume() </a></li>
+			<li><a href="#elapsedTime">elapsedTime() </a></li>
+			<li><a href="#log">log() </a></li>
+			<li class="label"> Event Methods </li>
+
+			<li><a href="#on">on() </a></li>
+			<li><a href="#at">at() </a></li>
+			<li><a href="#trigger">trigger() </a></li>
+			<li><a href="#loop">loop().for() </a></li>
+			<li><a href="#after">after() </a></li>
+			<li><a href="#defer">defer() </a></li>
+			<li><a href="#wait">wait() </a></li>
+			<li><a href="#remove">remove() </a></li>
+			<li><a href="#">wow </a></li>
+		</ol>
+
+	</div>
+	<div class="wrapper">
+		<div class="section">
+			<h1>Documentation</h1>
+			<p>Looking for dogumentation? <a href="#" onclick="dogefy()">Click here</a>.</p>
+		</div>
+		<div class="section">
+		<h2 id="synopsis"> Synopsis </h2>
+		<p>
+			
+		</p>
+		</div>
+		<div class="section">
+			<h2 id="usage">Usage</h2>
+			<p>
+				Instantiation is like any other use of '<span class="red code">new</span>'.
+			</p>
+
+			<p>
+				<div class="example"><span class="var">var</span> timeline = new Timeline( [options] );</div>
+			</p>
+
+			<h4>Arguments:</h4>
+			<p> All arguments should be passed in wrapped in an object, like so: </p>
+			<p>
+				<div class="example"><span class="var">var</span> timeline = new Timeline( {
+					'useRAF': true,
+					'autostart': false
+				}); 
+				</div>
+			</p>
+			<p class="arg">
+				<div class="code type">boolean</div> <div class="code">useRAF</div>
+			</p>
+			<p>
+				Decides if requestAnimationFrame will be used. requestAnimationFrame polyfills to fallback onto window.setInterval(). <br /> See requestAnimationFrame  <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/">polyfill</a>.
+			</p>
+			<p>
+				Default is <span class="red code">true</span>.
+			</p>
+			<p class="arg">
+				<div class="code type">boolean</div> <div class="code">autostart</div>
+			</p>
+			<p>
+				If true, the clock mechanism inside of the timeline object will start upon instantiation.
+			</p>
+			<p >Default is <span class="red">false</span>.</p>
+		</div>
+
+
+
+		<div class="section">
+			<h1 id ="clock_methods">Clock Methods</h1>
+			<p>Methods related to using the internal clock.</p>
+		</div>
+
+
+
+		<div class="section">
+			<h2 id="start">start()</h2>
+			<p>Starts the clock. start() is chainable.</p>
+
+			<p>
+				<div class="example"><span class="var">var</span> t = new Timeline();
+					t.start();
+				</div>
+			</p>
+		</div>
+		<div class="section">
+			<h2 id="pause">pause()</h2>
+			<p>Pauses the clock. Timed events won't fire, but events set with <a href="#on">on()</a> can still be triggered. pause() is chainable.</p>
+
+			<p>
+				<div class="example"><span class="var">var</span> t = new Timeline();
+					t.start();
+					<span class="comment">/* ... */</span>
+					t.pause();
+				</div>
+			</p>
+		</div>
+		<div class="section">
+			<h2 id="reset">reset()</h2>
+			<p>Completely resets the clock and <strong>all events</strong>, then starts the clock again. reset() is chainable.</p>
+
+
+			<p>
+				<div class="example"><span class="var">var</span> t = new Timeline();
+					t.start();
+
+					<span class="comment">/* ... */</span>
+
+					t.pause();
+				</div>
+			</p>
+		</div>
+		<div class="section">
+			<h2 id="resume">resume()</h2>
+			<p> Resumes the clock after being paused. </p>
+				<div class="example"><span class="var">var</span> t = new Timeline();
+					t.start().pause();
+
+					<span class="comment">/* ... */</span>
+
+					t.resume();
+				</div>
+		</div>
+		<div class="section">
+			<h2 id="elapsedTime">elapsedTime()</h2>
+			<p>
+				Returns the amount of time that the clock has been running <strong>in seconds</strong>. <em>Not</em> chainable.
+			</p>
+				<div class="example"><span class="var">var</span> t = new Timeline();
+					t.start();
+
+					<span class="var">var</span> x = t.elapsedTime(); // x -> 0
+
+				</div>
+		</div>
+		<div class="section">
+			<h2 id="log">log()</h2>
+			<p>
+				Outputs the amount of internal ticks, elapsed seconds, and a rough estimation of the Frames per Second. If <span class="code">debug = true</span>,.log() will be called every tick, so <span class="code">console.clear()</span> is used to keep the <span class="code">console.clear()</span>.
+			</p>
+
+
+			<p> To turn on the clock's logging per tick, use </p>
+			<div class="example"><span class="var">var</span> t = new Timeline();
+					t.start();
+
+					<span class="var">t.debug = true;</span>
+
+			</div>
+
+			<p> Screenshot: </p>
+			<p> <img src="consoleclear_example.png" /> </p>
+		</div>
+		<div class="section">
+			<h1 id="event_methods">Event Methods</h1>
+	</div>
+</body>
+</html>

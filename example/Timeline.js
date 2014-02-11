@@ -179,9 +179,9 @@ var Timeline = function(args) {
     return this;
   };
 
-  this.on = function(eventName, fn /* [, context, args ] */) {
+  this.on = function(eventName, fn /* [, args, context ] */) {
 
-    var context = arguments[2] || null, args = arguments[3] || this;
+    var context = arguments[3] || this, args = arguments[2] || [];
 
     // create an array for the event
     events.nominal[eventName] = events.nominal[eventName] || []
@@ -196,9 +196,9 @@ var Timeline = function(args) {
     return this;
   };
 
-  this.at = function( elapsedSeconds, fn /* [, context, args ] */) {
+  this.at = function( elapsedSeconds, fn /* [, args, context ] */) {
 
-    var context = arguments[2] || null, args = arguments[3] || this;
+    var context = arguments[3] || null, args = arguments[2] || this;
 
     events.ordinal[elapsedSeconds] = events.ordinal[elapsedSeconds] || [];
     events.ordinal[elapsedSeconds].push({
@@ -285,8 +285,6 @@ var Timeline = function(args) {
     this.tick();
     return this;
   }; 
-
-  this.add = function(){};
 
   this.remove = function(event) {
 

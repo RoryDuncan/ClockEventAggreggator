@@ -167,10 +167,11 @@
 			<li><a href="#at">at() </a></li>
 			<li><a href="#loop">loop().for() </a></li>
 			<li><a href="#after">after() </a></li>
-			<li><a href="#defer">defer() </a></li>
-			<li><a href="#wait">wait() </a></li>
 			<li><a href="#remove">remove() </a></li>
-			<li><a href="#">wow </a></li>
+			<li><a href="#defer">defer() </a></li>
+
+			<li class="label"> Built-in Events </li>
+			<li><a href="#default_events"> Default Events</a> </li>
 		</ol>
 
 	</div>
@@ -366,149 +367,231 @@
 				t.on("error", stopClockAndAddScore, t, [184,16]); // when triggered, will pause clock and return 200
 
 			</div>
-			<div class="section">
-				<h2 id="trigger">trigger()</h2>
-				<p>
-					Triggers events set by <a href="#on">on()</a>.
-				</p>
-				<h3> Syntax </h3>
+		</div>
+		<div class="section">
+			<h2 id="trigger">trigger()</h2>
+			<p>
+				Triggers events set by <a href="#on">on()</a>.
+			</p>
+			<h3> Syntax </h3>
 
-				<div class="example">
-					Timeline.trigger(<span class="var">eventName</span>);
-				</div>
+			<div class="example">
+				Timeline.trigger(<span class="var">eventName</span>);
 			</div>
+		</div>
 
-			<div class="section">
-				<h2 id="at">at()</h2>
-				<p>
-					Used to create events that trigger at specific clock times.<br /> The 'clock time' refers to the internal clock kept by the Timeline object.
-				</p>
-				<h3> Syntax </h3>
+		<div class="section">
+			<h2 id="at">at()</h2>
+			<p>
+				Used to create events that trigger at specific clock times.<br /> The 'clock time' refers to the internal clock kept by the Timeline object.
+			</p>
+			<h3> Syntax </h3>
 
-				<div class="example">
+			<div class="example">
 
-					Timeline.at(<span class="var">elapsedTime</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
-				</div>
-				<p>
-					<span class="code type">Integer</span>  <span class="code var">elapsedTime</span>
-				</p>
-				<p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
-
-				<p>
-					<span class="code type">Function</span>  <span class="code var">callback</span>
-				</p>
-				<p class="description"> The function to be called when the clock reaches the elapsed clock time.</p>
-
-				<p><span class="code type">Array</span> <span class="code var">args</span></p>
-				<p class="description"> The arguments that should be passed into the triggered function when called. Should be passed as an array: </p>
-				<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
-
-				<p><span class="code type">Object</span>  <span class="code var">scope</span> </p>
-				<p class="description"> The context that the triggered function will be called in. defaults to the Timeline object.</p>
-
-				<h4> Examples </h4>
-
-				<div class="example">
-					<span class="var">var</span> t = new Timeline();
-					
-					t.at(10, (function(){
-					&nbsp;&nbsp;&nbsp;&nbsp;alert("Hello!");
-					}));
-				</div>
+				Timeline.at(<span class="var">elapsedTime</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
 			</div>
-			<div class="section">
-				<h2 id="loop">loop() and loop().for()</h2>
-				<p>
-					Used to create events that loop at specific clock intervals.<br /> The 'clock time' refers to the internal clock kept by the Timeline object.
-				</p>
-				<h3> Syntax </h3>
+			<p>
+				<span class="code type">Integer</span>  <span class="code var">elapsedTime</span>
+			</p>
+			<p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
 
-				<div class="example">
+			<p>
+				<span class="code type">Function</span>  <span class="code var">callback</span>
+			</p>
+			<p class="description"> The function to be called when the clock reaches the elapsed clock time.</p>
 
-					Timeline.loop(<span class="var">loopName</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
-				</div>
-				<p>
-					<span class="red">Unique</span> <span class="code type">String</span>  <span class="code var">loopName</span>
-				</p>
-				<p class="description">A <strong>Unique</strong> name to maintain the loop externally. Can be any string allowed as a javascript object property. </p>
+			<p><span class="code type">Array</span> <span class="code var">args</span></p>
+			<p class="description"> The arguments that should be passed into the triggered function when called. Should be passed as an array: </p>
+			<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
+
+			<p><span class="code type">Object</span>  <span class="code var">scope</span> </p>
+			<p class="description"> The context that the triggered function will be called in. defaults to the Timeline object.</p>
+
+			<h4> Examples </h4>
+
+			<div class="example">
+				<span class="var">var</span> t = new Timeline();
 				
-				<h4>loop() </h4>
-				<p>
-					<span class="code type">Function</span>  <span class="code var">callback</span>
-				</p>
-				<p class="description"> 
-					The function to be called when the clock reaches the elapsed clock time.
-				</p>
-				<p>
-					<span class="code type">Object</span>  <span class="code var">scope</span>
-				</p>
-				<p class="description">
-					The context that the triggered function will be called in. defaults to the Timeline object.
-				</p>
-				<p>
-					<span class="code type">Array</span> <span class="code var">args</span>
-				</p>
-				<p class="description">
-				 The arguments that should be passed into the triggered function when called. Should be passed as an array: 
-				</p>
-				<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
-				<h4> for() </h4>
-				<p><span class="code type">Object</span>  <span class="code var">options</span> </p>
-				<p class="description"> The options are passed in as an object.</p><br />
-				<p><strong> The options consist of: </strong></p> <br />
-				<p>
-					<span class="code type">Integer</span>  <span class="code var">options.start</span>
-				</p>
-				<p class="description"> The clock time that the loop should begin it's intervals. Defaults to the current clock time (Immediately).</p>
-				<p>
-					<span class="code type">Integer</span>  <span class="code var">options.stop</span>
-				</p>
-				<p class="description"> 
-					The clock time that the loop should stop it's intervals. Defaults to <span class="code type">Infinity</span>.
-				</p>
-				<p>
-					<span class="code type">Integer</span>  <span class="code var">options.interval</span>
-				</p>
-				<p class="description"> 
-					The amount of clock time that the loop will have between it's intervals. Defaults to 9999.
-				</p>
-				<p>
-					<span class="code type">Integer</span>  <span class="code var">options.maxIntervals</span>
-				</p>
-				<p class="description"> 
-					A hard limit on the amount of times the loop may iterate. Defaults to <span class="code type">Infinity</span>.
-				</p>
-				<p>
-					<span class="code type">Integer</span>  <span class="code var">options.duration</span>
-				</p>
-				<p class="description"> 
-					The duration of the loop's callback. Defaults to 0. Increases the time between intervals, rather than taking the duration out of the interval times.
-				</p>
-
-				<h4> Examples </h4>
-
-				<div class="example">
-					<span class="var">var</span> t = new Timeline();
-
-
-					// timed loop test
-
-					<span class="var">var</span> test = function(){
-					&nbsp;&nbsp;&nbsp;&nbsp;console.log( "called at " + this.now + " seconds.");
-					};
-
-					var times = {
-					&nbsp;&nbsp;&nbsp;&nbsp;"start": 2,
-					&nbsp;&nbsp;&nbsp;&nbsp;"interval": 5,
-					&nbsp;&nbsp;&nbsp;&nbsp;"stop": 10,
-					&nbsp;&nbsp;&nbsp;&nbsp;"maxIntervals":3,
-					&nbsp;&nbsp;&nbsp;&nbsp;"duration": 2
-					};
-					
-					
-					t.<span class="var">loop</span>("test", test).<span class="var">for</span>( times );
-
+				t.at(10, (function(){
+				&nbsp;&nbsp;&nbsp;&nbsp;alert("Hello!");
+				}));
 			</div>
+		</div>
+		<div class="section">
+			<h2 id="loop">loop() and loop().for()</h2>
+			<p>
+				Used to create events that loop at specific clock intervals.<br /> The 'clock time' refers to the internal clock kept by the Timeline object.
+			</p>
+			<h3> Syntax </h3>
+
+			<div class="example">
+
+				Timeline.loop(<span class="var">loopName</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
+			</div>
+			<p>
+				<span class="red">Unique</span> <span class="code type">String</span>  <span class="code var">loopName</span>
+			</p>
+			<p class="description">A <strong>Unique</strong> name to maintain the loop externally. Can be any string allowed as a javascript object property. <em> It is recomended to not have matching on() and loop() event names. See <a href="#remove">remove()</a> for more details. </em></p>
+			
+			<h4>loop() </h4>
+			<p>
+				<span class="code type">Function</span>  <span class="code var">callback</span>
+			</p>
+			<p class="description"> 
+				The function to be called when the clock reaches the elapsed clock time.
+			</p>
+			<p>
+				<span class="code type">Object</span>  <span class="code var">scope</span>
+			</p>
+			<p class="description">
+				The context that the triggered function will be called in. defaults to the Timeline object.
+			</p>
+			<p>
+				<span class="code type">Array</span> <span class="code var">args</span>
+			</p>
+			<p class="description">
+			 The arguments that should be passed into the triggered function when called. Should be passed as an array: 
+			</p>
+			<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
+			<h4> for() </h4>
+			<p><span class="code type">Object</span>  <span class="code var">options</span> </p>
+			<p class="description"> The options are passed in as an object.</p><br />
+			<p><strong> The options consist of: </strong></p> <br />
+			<p>
+				<span class="code type">Integer</span>  <span class="code var">options.start</span>
+			</p>
+			<p class="description"> The clock time that the loop should begin it's intervals. Defaults to the current clock time (Immediately).</p>
+			<p>
+				<span class="code type">Integer</span>  <span class="code var">options.stop</span>
+			</p>
+			<p class="description"> 
+				The clock time that the loop should stop it's intervals. Defaults to <span class="code type">Infinity</span>.
+			</p>
+			<p>
+				<span class="code type">Integer</span>  <span class="code var">options.interval</span>
+			</p>
+			<p class="description"> 
+				The amount of clock time that the loop will have between it's intervals. Defaults to 9999.
+			</p>
+			<p>
+				<span class="code type">Integer</span>  <span class="code var">options.maxIntervals</span>
+			</p>
+			<p class="description"> 
+				A hard limit on the amount of times the loop may iterate. Defaults to <span class="code type">Infinity</span>.
+			</p>
+			<p>
+				<span class="code type">Integer</span>  <span class="code var">options.duration</span>
+			</p>
+			<p class="description"> 
+				The duration of the loop's callback. Defaults to 0. Increases the time between intervals, rather than taking the duration out of the interval times.
+			</p>
+
+			<h4> Examples </h4>
+
+			<div class="example">
+				<span class="var">var</span> t = new Timeline();
+
+
+				// timed loop test
+
+				<span class="var">var</span> test = function(){
+				&nbsp;&nbsp;&nbsp;&nbsp;console.log( "called at " + this.now + " seconds.");
+				};
+
+				var times = {
+				&nbsp;&nbsp;&nbsp;&nbsp;"start": 2,
+				&nbsp;&nbsp;&nbsp;&nbsp;"interval": 5,
+				&nbsp;&nbsp;&nbsp;&nbsp;"stop": 10,
+				&nbsp;&nbsp;&nbsp;&nbsp;"maxIntervals":3,
+				&nbsp;&nbsp;&nbsp;&nbsp;"duration": 2
+				};
+				
+				
+				t.<span class="var">loop</span>("test", test).<span class="var">for</span>( times );
+
+		</div>
+		<div class="section">
+			<h2 id="after">after()</h2>
+			<p>
+				Triggers a function after a specific amount of seconds from when after() is called. after() is a shorthand for what is a probable usage.
+			</p>
+			<h3> Syntax </h3>
+
+			<div class="example">
+				Timeline.after(<span class="var">seconds</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
+			</div>
+			<p>
+				All the parameters of after() are the same as <a href="at">at()</a>, except that after() add the <span class="var">seconds</span> passed in to the current clock time and triggers it then.
+			</p>
+		</div>
+		<div class="section">
+			<h2 id="remove">remove()</h2>
+			<p>
+				Removes events set by <a href="#on">on()</a>, <a href="#at">at()</a>, and <a href="#loop">loop()</a>. 
+			</p>
+			<h3> Syntax </h3>
+
+			<div class="example">
+				Timeline.remove( <span class="var">event</span> );
+			</div>
+			<p> Where <span class="var">event</span> is an <span class="var">eventName</span> set by <a href="#on">on()</a>,
+				<br /><br /> <strong>or</strong> <br /><br />
+				where <span class="var">event</span> is a time (in seconds) that an event was set to trigger with <a href="#at">at()</a>,
+				<br /><br /> <strong>or</strong> <br /><br />
+				where <span class="var">event</span> is the unique name of a loop (added using <a href="#loop">loop()</a> method) 
+			</p>
+			<p> <em> It is recomended to not have matching event names with on() and loop(). If this advice is disregarded, note that it will first remove the event set by on() before the looping event. If you feel the need to have matching names, consider a naming scheme such as loops being suffixed with the '-loop'.</em> Example: 'render-loop'.</p>
+
+		</div>
+
+		<div class="section">
+			<h2 id="defer">defer()</h2>
+
+			<p>
+				Waits for the current stack to clear before calling a function. Uses window.setTimeout().</a>. 
+			</p>
+
+			<h3> Syntax </h3>
+
+			<div class="example">
+				Timeline.defer( <span class="var">callback</span> );
+			</div>
+			<p>
+				<span class="code type">Function</span>  <span class="code var">callback</span>
+			</p>
+			<p class="description"> 
+				The function to be deferred.
+			</p>
+
+		</div>
+
+		<div class="section">
+			<h1 id ="default_events">Built-In Events</h1>
+			<p>
+				Events that may make your life easier.
+			</p>
+			<p> <a href="#default_events">Link to this section </a> <p>
+		</div>
+
+		<div class="section">
+
+		<h2> A small list of built-in events </h2>
+		<p class="description">
+		 These events are automatically triggered, but can alse be triggered using the <a href="#trigger">trigger()</a> method.
+		</p>
+		<ol class="unstyled">
+		<li> '<span class="var">on:tick</span>' </li>
+		<li> '<span class="var">on:start</span>' </li>
+		<li> '<span class="var">after:start</span>'</li>
+		<li> '<span class="var">on:pause</span>' </li>
+		<li> '<span class="var">on:resume</span>' </li>
+
+		</ol>
+
+		</div>
+
+
 		</div><!-- end of wrapper -->
 
 	</div>

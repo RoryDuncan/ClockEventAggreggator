@@ -67,7 +67,7 @@ var Timeline = function(args) {
   
   /*  Internal Functions */
 
-  //  clock mechanism
+  //  clock's tick mechanism
   var tick = function() {
 
     if (!running) return;
@@ -81,13 +81,27 @@ var Timeline = function(args) {
     // one-time events take precedence over loop events.
     triggerCurrentEvents();
     triggerLoopEvents();
-    
+
+    this.trigger("on:tick");
+
     if (useRAF) window.requestAnimationFrame( this.tick );
     else window.setTimeout(this.tick, this.tickInterval);
 
     return ticks;
   };
   
+  var buildDefaultEvents = function() {
+    // You would think that a programmer would iterate an array to make these.
+    events.nominal["on:tick"] = [];
+
+    events.nominal["on:start"] = [];
+    events.nominal["after:start"] = [];
+
+    events.nominal["on:pause"] = [];
+
+    events.nominal["on:resume"] = [];
+
+  };
   // trigger's any .on() or .at() events
   var triggerOrdinalEvents = function() {
 
@@ -155,10 +169,75 @@ var Timeline = function(args) {
   var  triggerCurrentEvents = triggerOrdinalEvents.bind(this);
   
 
-  /* API */
 
+
+  /* * * * * * * * * * * * * * API * * * * * * * * * * * * * */
+
+
+  /* Clock-related methods */
+
+
+  this.pause = function() {
+
+    running = false;
+    this.trigger("on:pause");
+    return this;
+  };
+
+  this.reset = function(){
+
+    //reset event lists
+    events.nominal = {};
+    events.ordinal = [];
+    events.loops = {};
+
+    buildDefaultEvents();
+
+    //reset counters
+    ticks = 0;
+    this.startTime = startTime = 0;
+
+    //boot up
+    this.start();
+    return this;
+  };
+
+  this.resume = function() {
+    if (running === true) return this;
+    running = true;
+    this.tick();
+    this.trigger("on:resume");
+    return this;
+  };
+
+  this.start = function() {
+
+    this.trigger("on:start");
+
+    this.startTime = startTime = Date.now();
+    running = true;
+    this.tick();
+
+    this.trigger("after:start");
+    return this;
+  }; 
+
+  
+  // if debug is true, log is automatically called each tick
+  this.debug = false;
+
+  this.log = function() {
+
+    console.clear();
+    console.log("ticks:", ticks);
+    console.log("elapsed seconds:", elapsedSeconds);
+    console.log("FPS:", ~~(ticks / elapsedSeconds));
+  };
 
   this.elapsedTime = function(){return elapsedSeconds;};
+
+
+  /* Event-related methods */
   
   this.trigger = function(eventName) {
 
@@ -248,43 +327,10 @@ var Timeline = function(args) {
 
   };
 
-  this.after = function(milliseconds, fn) {};
-  
-  this.pause = function() {
-    running = false;
-    return this;
+  this.after = function(seconds, fn /* [, args, context ] */) {
+    var args = argument[2], context = argument[3];
+    this.at(elapsedSeconds + seconds, fn, args, context);
   };
-
-  this.reset = function(){
-
-    //reset event lists
-    events.nominal = {};
-    events.ordinal = [];
-    events.loops = {};
-
-    //reset counters
-    ticks = 0;
-    this.startTime = startTime = 0;
-
-    //boot up
-    this.start();
-    return this;
-  };
-
-  this.resume = function() {
-    if (running === true) return this;
-    running = true;
-    this.tick();
-    return this;
-  };
-
-  this.start = function() {
-
-    this.startTime = startTime = Date.now();
-    running = true;
-    this.tick();
-    return this;
-  }; 
 
   this.remove = function(event) {
 
@@ -298,24 +344,25 @@ var Timeline = function(args) {
 
     if (typeof event === "string") {
 
-      if (events.nominal[eventName] === undefined) return {"removed":false, "ctx": this};
+      // if it is a event set with on():
+      if (events.nominal[eventName] === undefined) {
+
+        //if it is a loop event 
+        if (events.loops[eventName] === undefined) return {"removed":false, "ctx": this};
+
+        // loops terminate themselves automatically when set to delete
+        events.loops[eventName].delete = true;
+        return {"removed":true, "ctx": this};
+      }
 
       delete events.nominal[eventName];
       return {"removed":true, "ctx": this};
-    }
-   
+    } 
   };
-  
 
-  
-  /* debug */
-  this.debug = true;
-  this.log = function() {
-
-    console.clear();
-    console.log("ticks:", ticks);
-    console.log("elapsed seconds:", elapsedSeconds);
-    console.log("FPS:", ~~(ticks / elapsedSeconds));
+  this.defer = function(fn){
+    // waits for the current stack to clear
+    window.setTimeout(0, fn)
   };
 
 

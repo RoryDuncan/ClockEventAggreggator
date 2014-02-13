@@ -3,7 +3,9 @@ console.clear();
 /*  Request Animation polyfill.
     http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 */
-(function() {
+(function(window, undefined) {
+
+
     var lastTime = 0;
     var vendors = ['ms', 'moz', 'webkit', 'o'];
     for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -26,7 +28,6 @@ console.clear();
         window.cancelAnimationFrame = function(id) {
             clearTimeout(id);
         };
-}());
 
 
 
@@ -394,4 +395,4 @@ var times = {
 timeline.loop("test", test).for( times );
 
 
-
+}(this));

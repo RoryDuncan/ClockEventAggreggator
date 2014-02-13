@@ -53,9 +53,13 @@ var Timeline = function(args) {
       options = extend(defaults, args),
       ticks = 0,
       startTime = 0,
+      startSeconds = 0,
       running = false,
       useRAF = options.useRAF,
       elapsedSeconds = 0,
+      delta = 0,
+      comparativeDelta = 0,
+      lastTick = 0,
       realElapsedSeconds = 0;
       this.tickInterval = options.tickInterval;
       
@@ -69,15 +73,22 @@ var Timeline = function(args) {
   /*  Internal Functions */
 
   //  clock's tick mechanism
-  var tick = function() {
+  var tick = function(t) {
 
+    
     if (!running) return;
     
     ticks++;
     if (this.debug) this.log();
 
-    elapsedSeconds = (ticks * 16) / 1000;
-    realElapsedSeconds = ( new Date().getTime() - startTime ) / 1000;
+    this.delta = delta = new Date().getTime() - lastTick;
+    lastTick = t || new Date().getTime();
+
+    //this.delta = delta = ( new Date().getSeconds() / realElapsedSeconds);
+    comparativeDelta = 0;
+    elapsedSeconds = (ticks * delta) / 1000;
+
+    realElapsedSeconds = ( new Date().getSeconds() - startSeconds ) ;
 
     // one-time events take precedence over loop events.
     triggerCurrentEvents();
@@ -179,7 +190,6 @@ var Timeline = function(args) {
 
 
   this.pause = function() {
-
     running = false;
     this.trigger("on:pause");
     return this;
@@ -215,9 +225,10 @@ var Timeline = function(args) {
 
     this.trigger("on:start");
 
-    this.startTime = startTime = Date.now();
+    this.startTime = startTime = new Date().getTime();
+    startSeconds = new Date().getSeconds();
     running = true;
-    this.tick();
+    this.tick( new Date().getTime() );
 
     this.trigger("after:start");
     return this;
@@ -225,13 +236,16 @@ var Timeline = function(args) {
 
   
   // if debug is true, log is automatically called each tick
-  this.debug = false;
+  this.debug = true;
 
   this.log = function() {
 
     console.clear();
+
     console.log("ticks:", ticks);
     console.log("elapsed seconds:", elapsedSeconds);
+    console.log("actual elapsed seconds:", realElapsedSeconds);
+    console.log("delta:", delta);
     console.log("FPS:", ~~(ticks / elapsedSeconds));
   };
 
@@ -365,7 +379,7 @@ var Timeline = function(args) {
     // waits for the current stack to clear
     window.setTimeout(0, fn)
   };
-
+  console.log("this", this);
 
   if (options.autostart === true) this.start();
   else return this;
@@ -378,11 +392,14 @@ window.timeline = timeline; // for pausing in the console
 
 
 // timed event testing
-timeline.at(3, function() { console.log("3 seconds of elapsed time."); });
+
+//timeline.at(2, function() {console.log(this); this.pause(); }, [], timeline);
 
 // timed loop test
 var test = function(){
-  console.log( "called at " + this.now + " seconds.");
+  document.write( "called at " + this.now + " seconds.<br />");
+  document.write("delta is " + this.parent.delta + " seconds. <br />");
+
 };
 var times = {
   "start": 2,

@@ -57,11 +57,14 @@ var Timeline = function(args) {
       running = false,
       useRAF = options.useRAF,
       elapsedSeconds = 0,
+      elapsedMilliseconds = 0,
       delta = 0,
-      comparativeDelta = 0,
+
       lastTick = 0,
       realElapsedSeconds = 0;
-      this.tickInterval = options.tickInterval;
+      this.tickInterval = options.tickInterval,
+
+      clockspeed = 0.5;
       
   // Event Aggregator related variables
   var events = {};
@@ -75,26 +78,29 @@ var Timeline = function(args) {
   //  clock's tick mechanism
   var tick = function(_lastTick) {
     
+    var d = new Date(); //cache
+
     if (!running) return;
     
-    ticks++;
+    ticks += 1 * clockspeed;
     if (this.debug) this.log();
 
-    this.delta = delta = new Date().getTime() - lastTick;
-    lastTick = _lastTick || new Date().getTime();
+    this.delta = delta = d.getTime() - lastTick;
+    lastTick = _lastTick || d.getTime();
 
-    //this.delta = delta = ( new Date().getSeconds() / realElapsedSeconds);
-    comparativeDelta = 0;
-    elapsedSeconds = (ticks * delta) / 1000;
+    elapsedMilliseconds = (ticks * delta) / 10;
+    elapsedSeconds = ~~(elapsedMilliseconds / 100);
 
-    realElapsedSeconds = ( new Date().getSeconds() - startSeconds ) ;
+    realElapsedSeconds = ( d.getSeconds() - startSeconds ) ;
 
     // one-time events take precedence over loop events.
+    
     triggerCurrentEvents();
     triggerLoopEvents();
 
     this.trigger("on:tick");
 
+    
     if (useRAF) window.requestAnimationFrame( this.tick );
     else window.setTimeout(this.tick, this.tickInterval);
 
@@ -231,11 +237,18 @@ var Timeline = function(args) {
 
     this.trigger("after:start");
     return this;
-  }; 
+  };
+
+  this.multiplySpeed = function(multiplier){
+    speed *= multiplier || 1;
+  };
+  this.setSpeed = function(value){
+    speed = value || speed;
+  };
 
   
   // if debug is true, log is automatically called each tick
-  this.debug = false;
+  this.debug = true;
 
   this.log = function() {
 
@@ -244,7 +257,8 @@ var Timeline = function(args) {
     console.log("ticks:", ticks);
     console.log("elapsed seconds:", elapsedSeconds);
     console.log("actual elapsed seconds:", realElapsedSeconds);
-    console.log("delta:", delta);
+    console.log("delta:", delta)
+
     console.log("FPS:", ~~(ticks / elapsedSeconds));
   };
 
@@ -382,7 +396,7 @@ var Timeline = function(args) {
 
   if (options.bindToFunction === true) {
 
-      var _t = this; // reference, since wait is in the context of the function
+      var _t = this; // reference, since wait is in the context of the callee
 
       var wait = function(seconds, args, context) {
         _t.after(seconds, this, args, context);

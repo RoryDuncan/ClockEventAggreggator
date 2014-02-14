@@ -73,8 +73,7 @@ var Timeline = function(args) {
   /*  Internal Functions */
 
   //  clock's tick mechanism
-  var tick = function(t) {
-
+  var tick = function(_lastTick) {
     
     if (!running) return;
     
@@ -82,7 +81,7 @@ var Timeline = function(args) {
     if (this.debug) this.log();
 
     this.delta = delta = new Date().getTime() - lastTick;
-    lastTick = t || new Date().getTime();
+    lastTick = _lastTick || new Date().getTime();
 
     //this.delta = delta = ( new Date().getSeconds() / realElapsedSeconds);
     comparativeDelta = 0;
@@ -236,7 +235,7 @@ var Timeline = function(args) {
 
   
   // if debug is true, log is automatically called each tick
-  this.debug = true;
+  this.debug = false;
 
   this.log = function() {
 
@@ -343,7 +342,7 @@ var Timeline = function(args) {
   };
 
   this.after = function(seconds, fn /* [, args, context ] */) {
-    var args = argument[2], context = argument[3];
+    var args = arguments[2], context = arguments[3];
     this.at(elapsedSeconds + seconds, fn, args, context);
   };
 
@@ -379,14 +378,25 @@ var Timeline = function(args) {
     // waits for the current stack to clear
     window.setTimeout(0, fn)
   };
-  console.log("this", this);
+
+
+  if (options.bindToFunction === true) {
+
+      var _t = this; // reference, since wait is in the context of the function
+
+      var wait = function(seconds, args, context) {
+        _t.after(seconds, this, args, context);
+      };
+      
+      Function.prototype.wait = wait;
+  }
 
   if (options.autostart === true) this.start();
   else return this;
 };
  
 
-var timeline = new Timeline({autostart:true});
+var timeline = new Timeline({autostart:true, bindToFunction: true});
 
 window.timeline = timeline; // for pausing in the console
 
@@ -397,9 +407,7 @@ window.timeline = timeline; // for pausing in the console
 
 // timed loop test
 var test = function(){
-  document.write( "called at " + this.now + " seconds.<br />");
-  document.write("delta is " + this.parent.delta + " seconds. <br />");
-
+  // stuff
 };
 var times = {
   "start": 2,

@@ -1,9 +1,11 @@
 console.clear();
 
-/*  Request Animation polyfill.
-    http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
-*/
+
 (function(window, undefined) {
+
+    /*  Request Animation polyfill  */
+
+    //  http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 
 
     var lastTime = 0;
@@ -31,11 +33,11 @@ console.clear();
 
 
 
-  var Timeline = function(args) {
-
+  var ClockEventAggreggator = function(args) {
 
 
     /* Helper for merging objects */
+
     var extend = function(){
       if (arguments.length < 2) return;
       var extended = arguments[0];
@@ -48,7 +50,9 @@ console.clear();
       return extended;
     };
 
-    //Timeline related variables
+
+    /*  Timeline related variables  */
+
     var defaults = {useRAF: false, tickInterval: 16, autostart: false},
         options = extend(defaults, args),
         ticks = 0,
@@ -71,11 +75,13 @@ console.clear();
         
 
 
-    // Event Aggregator related variables
+    /*  Event Aggregator related variables  */
+
     var events = {};
         events.nominal = {};
         events.ordinal = [];
         events.loops = {};
+
     
     /*  Internal Functions */
 
@@ -123,7 +129,6 @@ console.clear();
       events.nominal["pause"] = [];
 
       events.nominal["resume"] = [];
-
     };
     // trigger's any .on() or .at() events
     var triggerOrdinalEvents = function() {
@@ -186,7 +191,7 @@ console.clear();
     };
 
 
-    /* Bindings */
+    /*  Bindings  */
 
     this.tick = tick.bind(this);
     var triggerLoopEvents = triggerLoopEvents.bind(this);
@@ -199,7 +204,7 @@ console.clear();
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
-    /* Clock-related methods */
+    /*  Clock-related methods  */
 
     this.start = function() {
 
@@ -267,21 +272,17 @@ console.clear();
       clockspeed = value || clockspeed;
     };
 
-    this.ticks = function(){
-      return ticks;
-    };
-    this.seconds = function(){
-      return elapsedTime / 10000 ;
-    };
+    this.ticks = function(){return ticks;};
+
+    this.seconds = function(){return elapsedTime / 10000 ;};
 
     
-    // if debug is true, log is automatically called each tick
+    
     this.debug = options.debug || false;
-
+    // if debug is true, log is automatically called each tick
     this.log = function() {
 
       console.clear();
-
       console.log("ticks:", ticks);
       console.log("delta:", delta)
       console.log("elapsed time:", elapsedTime);
@@ -292,11 +293,13 @@ console.clear();
       console.log("Estimated FPS:", ~~(ticks / ( elapsedTime / 1000 )));
     };
 
-    this.time = this.now = function(){return elapsedTime;};
+    this.time = this.now = function(){ return elapsedTime; };
 
 
-    /* Event-related methods */
+
+    /*  Event-related methods  */
     
+
     this.trigger = function(eventName) {
 
       if (events.nominal[eventName] === undefined) return this;
@@ -423,14 +426,25 @@ console.clear();
       // waits for the current stack to clear
       window.setTimeout(0, fn)
     };
+    this.viewEvents = function(){
+      return events;
+    };
 
+    /* * * * * * * * * * * * * *
 
+      bindToFunction:
+
+      Attach <function>.wait method to the Function.prototype,
+      delegating to the timeline's <this>.after() method.
+      Useful? Could be. Invasive of global prototypes? Def.
+
+    * * * * * * * * * * * * * */
     if (options.bindToFunction === true) {
 
         var _t = this; // reference, since wait is in the context of the callee
 
         var wait = function(seconds, args, context) {
-          _t.after(seconds, this, args, context);
+          _t.after(seconds, this, args, context); 
         };
         
         Function.prototype.wait = wait;
@@ -441,10 +455,12 @@ console.clear();
   };
    
 
-  var timeline = new Timeline({autostart:true, bindToFunction: true, debug: false});
+  window.ClockEventAggreggator = ClockEventAggreggator;
 
-  window.timeline = timeline; // for pausing in the console
-
-
+  var cea = new ClockEventAggreggator({
+    autostart:true,
+    bindToFunction: false,
+    debug: false
+  });
 
 }(this));

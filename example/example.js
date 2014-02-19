@@ -1,5 +1,6 @@
 
 
+
 var example = function(){
 
   var canvas = document.getElementById("renderExample"),
@@ -14,7 +15,7 @@ var example = function(){
       };
 
 
-  var render = function(){
+  var render = function() {
 
     var ticksHand = function(){
       var radius = canvas.width * 0.4;
@@ -67,9 +68,11 @@ var example = function(){
     ticksHand();
     secondsHand();
     minutesHand();
+
   };
 
   timeline.on("tick", render);
 
 };
+
 example();

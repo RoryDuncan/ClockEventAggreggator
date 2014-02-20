@@ -4,9 +4,7 @@
 
 /*** If you're just looking for ClockEventAggreggator's usage, it is used on line 109 ***/
 
-
-var ClockEventAggreggator = window.ClockEventAggreggator,
-    clock = new ClockEventAggreggator();
+  var clock = new ClockEventAggreggator();
 
 
 // a wrapper
@@ -107,7 +105,7 @@ var example = function(){
 
   // start the ClockEventAggreggator
   clock.start();
-  
+
   // use the ClockEventAggreggator's "on" method
   clock.on("tick", render);
 

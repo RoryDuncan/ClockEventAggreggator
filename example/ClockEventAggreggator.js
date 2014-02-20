@@ -1,4 +1,3 @@
-console.clear();
 
 
 (function(window, undefined) {
@@ -456,11 +455,5 @@ console.clear();
    
 
   window.ClockEventAggreggator = ClockEventAggreggator;
-
-  var cea = new ClockEventAggreggator({
-    autostart:true,
-    bindToFunction: false,
-    debug: false
-  });
 
 }(this));

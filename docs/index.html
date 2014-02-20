@@ -1,599 +1,638 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Documentation </title>
+  <meta charset="UTF-8">
+  <title>Documentation </title>
 
 <style type="text/css">
-	
-	body {
-		margin: 0 0;
-		font-family: "Helvetica", "Arial", sans-serif;
-		background-color: #ddd;
-	}
-	.sections {
-		border-bottom:1px solid #ccc;
-		position:fixed;
-		left:0px;
-		top:0px;
-		width: 300px;
-		background-color: #fff;
-		font-family:  "Helvetica", "Arial", sans-serif;
-		font-weight: lighter;
+  
+  body {
+    margin: 0 0;
+    font-family: "Helvetica", "Arial", sans-serif;
+    background-color: #ddd;
+  }
+  .sections {
+    border-bottom:1px solid #ccc;
+    position:fixed;
+    left:0px;
+    top:0px;
+    width: 300px;
+    background-color: #fff;
+    font-family:  "Helvetica", "Arial", sans-serif;
+    font-weight: lighter;
 
 
-	}
-	.sections h4 {
-		color: #000;
-		font-weight: 500;
-		border-bottom:1px solid #ccc; 
-		background-color: #fff;
-		margin: 0 auto; 
-		padding: 15px 5px; 
-		text-align:center;
-		font-family: "Helvetica Neue", "Helvetica", sans-serif;
-		font-size: 1.5em;
-	}
-	
-	.sections ol {padding: 0 0; margin: 0 0;}
+  }
+  .sections h4 {
+    color: #000;
+    font-weight: 500;
+    border-bottom:1px solid #ccc; 
+    background-color: #fff;
+    margin: 0 auto; 
+    padding: 15px 5px; 
+    text-align:center;
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 1.5em;
+  }
+  
+  .sections ol {padding: 0 0; margin: 0 0;}
 
-	.sections ol li {
-		padding:5px 5px 5px 30px;
-		font-family:"Arial"
-	}
+  .sections ol li {
+    padding:5px 5px 5px 30px;
+    font-family:"Arial"
+  }
 
-	.sections ol li.label {
-		font-family: "Helvetica Neue", "Helvetica", sans-serif;
-		font-size: 1.2em;
-		border-top: 1px solid #ccc;
-		border-bottom: 1px solid #ccc;
-		text-align:left;
-		color: #000;
-		background-color: #fff !important;
-		padding: 10px 10px;
-	}
-
-
-
-	.sections ol li {
-		background-color: #f5f5f5;
-	}
-
-	.sections ol li:nth-of-type(2n) {
-		background-color: #eee;
-	}
-
-	.wrapper {
-		border-left:1px solid #ccc;
-		margin: 0 auto 0 300px;
-		max-width:1000px;
-		background-color:#fff;
-	}
-
-	p {padding-left:25px; color: #555;}
-	
-	.red {
-		font-size:1.2em;
-		color: #c44;
-		font-family: monospace;
-		font-weight:bolder;
-	}
-
-	div.example {
-		white-space: pre-line;
-		background-color: #ffe; 
-		color: #000; 
-		padding: 4px 25px;
-		font-family: monospace ;
-	}
-
-	.var {color: #800; font-weight:900;}
-	.type { color: #22f; font-weight:bold; font-size:1.2em;}
-
-	.code {font-family: monospace; font-size:1.2em;}
-	ol.unstyled {}
-	ol.unstyled li {
-
-	}
-
-	.section {
-		padding: 50px 50px;
-		border-bottom: 1px solid #ccc;
-	}
-
-	.section h1 {
-		font-family: "Helvetica Neue", "Helvetica", sans-serif;
-		font-weight: lighter;
-		font-size:3em;
-	}
-
-	.section h2 {
-		background-color:#0aa;
-		padding: 9px 18px;
-		border-radius: 3px;
-		color: #fff;
-	}
-
-	.doge a:nth-of-type(3n+1):before {content:"wow ";}
+  .sections ol li.label {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 1.2em;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align:left;
+    color: #000;
+    background-color: #fff !important;
+    padding: 10px 10px;
+  }
 
 
-	.doge *:nth-of-type(2n):before {
-	 	display:inline;
 
-	 	/*font-family: cursive !important;*/
-		content:"wow ";
-	}
+  .sections ol li {
+    background-color: #f5f5f5;
+  }
+
+  .sections ol li:nth-of-type(2n) {
+    background-color: #eee;
+  }
+
+  .wrapper {
+    border-left:1px solid #ccc;
+    margin: 0 auto 0 300px;
+    max-width:1000px;
+    background-color:#fff;
+  }
+
+  p {padding-left:25px; color: #555;}
+  
+  .red {
+    font-size:1.2em;
+    color: #c44;
+    font-weight:bolder;
+  }
+
+  div.example {
+    white-space: pre-line;
+    background-color: #ffe; 
+    color: #000; 
+    padding: 4px 25px;
+    font-family: monospace ;
+  }
+
+  .var {color: #800; font-weight:900;}
+  .type { color: #22f; font-weight:bold; font-size:1.2em;}
+
+  .code {font-family: monospace; font-size:1.2em;}
+  ol.unstyled {}
+  ol.unstyled li {
+
+  }
+
+  .section {
+    padding: 50px 50px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .section h1 {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    font-weight: lighter;
+    font-size:3em;
+  }
+
+  .section h2 {
+    background-color:#0aa;
+    padding: 9px 18px;
+    border-radius: 3px;
+    color: #fff;
+  }
+
+  .doge a:nth-of-type(3n+1):before {content:"wow ";}
 
 
-	.doge *:nth-of-type(3n):after {
-		display: inline-block;
+  .doge *:nth-of-type(2n):before {
+    display:inline;
 
-		/*font-family: cursive !important;*/
-		content:" wow  ";
-	}
+    /*font-family: cursive !important;*/
+    content:"wow ";
+  }
 
-	.arg {
-		padding: 10px 10px;
-		font-size: 1.2em;
-	}
 
-	</style>
+  .doge *:nth-of-type(3n):after {
+    display: inline-block;
 
-	<script type="text/javascript">
-	var dogefy = function(){
-		if (document.body.className === "doge") document.body.className = "";
-		else document.body.className = "doge";
-	};
-	</script>
+    /*font-family: cursive !important;*/
+    content:" wow  ";
+  }
+
+  .arg {
+    padding: 10px 10px;
+    font-size: 1.2em;
+  }
+
+  </style>
+
+  <script type="text/javascript">
+  var dogefy = function(){
+    if (document.body.className === "doge") document.body.className = "";
+    else document.body.className = "doge";
+  };
+  </script>
 
 </head>
 <body>
-	<div class="sections">
-		<h4> Sections </h4>
-		<ol class="unstyled">
-
-			<li><a href="#synopsis">Synopsis </a></li>			
-			<li><a href="#usage">Usage </a></li>
-			<li class="label"> Clock Methods </li>
-			<li><a href="#start">start() </a></li>
-			<li><a href="#pause">pause() </a></li>
-			<li><a href="#reset">reset() </a></li>
-			<li><a href="#resume">resume() </a></li>
-			<li><a href="#elapsedTime">elapsedTime() </a></li>
-			<li><a href="#log">log() </a></li>
-			<li class="label"> Event Methods </li>
-
-			<li><a href="#on">on() </a> &amp; <a href="#trigger">trigger() </a></li>
-			<li><a href="#at">at() </a></li>
-			<li><a href="#loop">loop().for() </a></li>
-			<li><a href="#after">after() </a></li>
-			<li><a href="#remove">remove() </a></li>
-			<li><a href="#defer">defer() </a></li>
-
-			<li class="label"> Built-in Events </li>
-			<li><a href="#default_events"> Default Events</a> </li>
-		</ol>
-
-	</div>
-	<div class="wrapper">
-		<div class="section">
-			<h1>Documentation</h1>
-			<p>Looking for dogumentation? <a href="#" onclick="dogefy()">Click here</a>.</p>
-		</div>
-		<div class="section">
-		<h2 id="synopsis"> Synopsis </h2>
-		<p>
-			
-		</p>
-		</div>
-		<div class="section">
-			<h2 id="usage">Usage</h2>
-			<p>
-				Instantiation is like any other use of '<span class="red code">new</span>'.
-			</p>
-
-			<p>
-				<div class="example"><span class="var">var</span> timeline = new Timeline( [options] );</div>
-			</p>
-
-			<h4>Arguments:</h4>
-			<p> All arguments should be passed in wrapped in an object, like so: </p>
-			<p>
-				<div class="example"><span class="var">var</span> timeline = new Timeline( {
-					'useRAF': true,
-					'autostart': false
-				}); 
-				</div>
-			</p>
-			<p class="arg">
-				<div class="code type">boolean</div> <div class="code">useRAF</div>
-			</p>
-			<p>
-				Decides if requestAnimationFrame will be used. requestAnimationFrame polyfills to fallback onto window.setInterval(). <br /> See requestAnimationFrame  <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/">polyfill</a>.
-			</p>
-			<p>
-				Default is <span class="red code">true</span>.
-			</p>
-			<p class="arg">
-				<div class="code type">boolean</div> <div class="code">autostart</div>
-			</p>
-			<p>
-				If true, the clock mechanism inside of the timeline object will start upon instantiation.
-			</p>
-			<p >Default is <span class="red">false</span>.</p>
-		</div>
-
-		<!-- Section 1 -->
-
-		<div class="section">
-			<h1 id ="clock_methods">Clock Methods</h1>
-			<p>
-				Methods related to using the internal clock. Clock methods don't take parameters.
-			</p>
-			<p> <a href="#clock_methods">Link to this section </a> <p>
-		</div>
-
-
-
-		<div class="section">
-			<h2 id="start">start()</h2>
-			<p>Starts the clock. start() is chainable.</p>
-
-			<p>
-				<div class="example"><span class="var">var</span> t = new Timeline();
-					t.start();
-				</div>
-			</p>
-		</div>
-		<div class="section">
-			<h2 id="pause">pause()</h2>
-			<p>Pauses the clock. Timed events won't fire, but events set with <a href="#on">on()</a> can still be triggered. pause() is chainable.</p>
-
-			<p>
-				<div class="example"><span class="var">var</span> t = new Timeline();
-					t.start();
-					<span class="comment">/* ... */</span>
-					t.pause();
-				</div>
-			</p>
-		</div>
-		<div class="section">
-			<h2 id="reset">reset()</h2>
-			<p>Completely resets the clock and <strong>all events</strong>, then starts the clock again. reset() is chainable.</p>
-
-
-			<p>
-				<div class="example"><span class="var">var</span> t = new Timeline();
-					t.start();
-
-					<span class="comment">/* ... */</span>
-
-					t.pause();
-				</div>
-			</p>
-		</div>
-		<div class="section">
-			<h2 id="resume">resume()</h2>
-			<p> Resumes the clock after being paused. </p>
-				<div class="example"><span class="var">var</span> t = new Timeline();
-					t.start().pause();
-
-					<span class="comment">/* ... */</span>
-
-					t.resume();
-				</div>
-		</div>
-		<div class="section">
-			<h2 id="elapsedTime">elapsedTime()</h2>
-			<p>
-				Returns the amount of time that the clock has been running <strong>in seconds</strong>. <em>Not</em> chainable.
-			</p>
-				<div class="example"><span class="var">var</span> t = new Timeline();
-					t.start();
-
-					<span class="var">var</span> x = t.elapsedTime(); // x -> 0
-
-				</div>
-		</div>
-		<div class="section">
-			<h2 id="log">log()</h2>
-			<p>
-				Outputs the amount of internal ticks, elapsed seconds, and a rough estimation of the Frames per Second. If <span class="code">debug = true</span>,.log() will be called every tick, so <span class="code">console.clear()</span> is used to keep the <span class="code">console.clear()</span>.
-			</p>
-
-
-			<p> To turn on the clock's logging per tick, use </p>
-			<div class="example"><span class="var">var</span> t = new Timeline();
-					t.start();
-
-					<span class="var">t.debug = true;</span>
-
-			</div>
-
-			<p> Screenshot of console output: </p>
-			<p> <img src="consoleclear_example.png" /> </p>
-		</div>
-
-
-		<div class="section">
-			<h1 id="event_methods">Event Methods </h1>
-			<p> Methods that interact with the event aggregator, trigger at specific timed events, or loop.</p>
-			<p> <a href="#event_methods">Link to this section </a> <p>
-		</div>
-
-		<div class="section">
-			<h2 id="on">on()</h2>
-			<p>
-				Used to create named triggerable events. See <a href="#trigger">trigger()</a> for triggering.
-			</p>
-			<h3> Syntax </h3>
-
-			<div class="example">
-				Timeline.on(<span class="var">eventName</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
-			</div>
-			<p>
-				<span class="code type">String</span>  <span class="code var">eventName</span>
-			</p>
-			<p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
-
-			<p>
-				<span class="code type">Function</span>  <span class="code var">callback</span>
-			</p>
-			<p class="description"> The function to be called when the event is triggered.</p>
-
-			<p><span class="code type">Array</span> <span class="code var">args</span></p>
-			<p class="description"> The arguments that should be passed into the triggered function when called. Should be passed as an array: </p>
-			<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
-			<p><span class="code type">Object</span>  <span class="code var">scope</span> </p>
-			<p class="description">
-				The context that the triggered function will be called in. defaults to the Timeline object.
-			</p>
-			<h4> Examples </h4>
-
-			<div class="example">
-				<span class="var">var</span> t = new Timeline();
-
-
-				// basic usage, assuming  the function 'wow' is declared
-				t.on("wrong-dialogue-confirmation", wow)
-			</div><br />
-			<div class="example">
-				// Using all parameters:
-				<span class="var">var</span> stopClockAndAddScore = function(x, y){
-					this.pause(); // See <a href="#pause">pause()</a>
-					console.log(this, x, y); // Timeline object, 184, 16
-				};
-
-				t.on("error", stopClockAndAddScore, t, [184,16]); // when triggered, will pause clock and return 200
-
-			</div>
-		</div>
-		<div class="section">
-			<h2 id="trigger">trigger()</h2>
-			<p>
-				Triggers events set by <a href="#on">on()</a>.
-			</p>
-			<h3> Syntax </h3>
-
-			<div class="example">
-				Timeline.trigger(<span class="var">eventName</span>);
-			</div>
-		</div>
-
-		<div class="section">
-			<h2 id="at">at()</h2>
-			<p>
-				Used to create events that trigger at specific clock times.<br /> The 'clock time' refers to the internal clock kept by the Timeline object.
-			</p>
-			<h3> Syntax </h3>
-
-			<div class="example">
-
-				Timeline.at(<span class="var">elapsedTime</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
-			</div>
-			<p>
-				<span class="code type">Integer</span>  <span class="code var">elapsedTime</span>
-			</p>
-			<p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
-
-			<p>
-				<span class="code type">Function</span>  <span class="code var">callback</span>
-			</p>
-			<p class="description"> The function to be called when the clock reaches the elapsed clock time.</p>
-
-			<p><span class="code type">Array</span> <span class="code var">args</span></p>
-			<p class="description"> The arguments that should be passed into the triggered function when called. Should be passed as an array: </p>
-			<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
-
-			<p><span class="code type">Object</span>  <span class="code var">scope</span> </p>
-			<p class="description"> The context that the triggered function will be called in. defaults to the Timeline object.</p>
-
-			<h4> Examples </h4>
-
-			<div class="example">
-				<span class="var">var</span> t = new Timeline();
-				
-				t.at(10, (function(){
-				&nbsp;&nbsp;&nbsp;&nbsp;alert("Hello!");
-				}));
-			</div>
-		</div>
-		<div class="section">
-			<h2 id="loop">loop() and loop().for()</h2>
-			<p>
-				Used to create events that loop at specific clock intervals.<br /> The 'clock time' refers to the internal clock kept by the Timeline object.
-			</p>
-			<h3> Syntax </h3>
-
-			<div class="example">
-
-				Timeline.loop(<span class="var">loopName</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
-			</div>
-			<p>
-				<span class="red">Unique</span> <span class="code type">String</span>  <span class="code var">loopName</span>
-			</p>
-			<p class="description">A <strong>Unique</strong> name to maintain the loop externally. Can be any string allowed as a javascript object property. <em> It is recomended to not have matching on() and loop() event names. See <a href="#remove">remove()</a> for more details. </em></p>
-			
-			<h4>loop() </h4>
-			<p>
-				<span class="code type">Function</span>  <span class="code var">callback</span>
-			</p>
-			<p class="description"> 
-				The function to be called when the clock reaches the elapsed clock time.
-			</p>
-			<p>
-				<span class="code type">Object</span>  <span class="code var">scope</span>
-			</p>
-			<p class="description">
-				The context that the triggered function will be called in. defaults to the Timeline object.
-			</p>
-			<p>
-				<span class="code type">Array</span> <span class="code var">args</span>
-			</p>
-			<p class="description">
-			 The arguments that should be passed into the triggered function when called. Should be passed as an array: 
-			</p>
-			<p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
-			<h4> for() </h4>
-			<p><span class="code type">Object</span>  <span class="code var">options</span> </p>
-			<p class="description"> The options are passed in as an object.</p><br />
-			<p><strong> The options consist of: </strong></p> <br />
-			<p>
-				<span class="code type">Integer</span>  <span class="code var">options.start</span>
-			</p>
-			<p class="description"> The clock time that the loop should begin it's intervals. Defaults to the current clock time (Immediately).</p>
-			<p>
-				<span class="code type">Integer</span>  <span class="code var">options.stop</span>
-			</p>
-			<p class="description"> 
-				The clock time that the loop should stop it's intervals. Defaults to <span class="code type">Infinity</span>.
-			</p>
-			<p>
-				<span class="code type">Integer</span>  <span class="code var">options.interval</span>
-			</p>
-			<p class="description"> 
-				The amount of clock time that the loop will have between it's intervals. Defaults to 9999.
-			</p>
-			<p>
-				<span class="code type">Integer</span>  <span class="code var">options.maxIntervals</span>
-			</p>
-			<p class="description"> 
-				A hard limit on the amount of times the loop may iterate. Defaults to <span class="code type">Infinity</span>.
-			</p>
-			<p>
-				<span class="code type">Integer</span>  <span class="code var">options.duration</span>
-			</p>
-			<p class="description"> 
-				The duration of the loop's callback. Defaults to 0. Increases the time between intervals, rather than taking the duration out of the interval times.
-			</p>
-
-			<h4> Examples </h4>
-
-			<div class="example">
-				<span class="var">var</span> t = new Timeline();
-
-
-				// timed loop test
-
-				<span class="var">var</span> test = function(){
-				&nbsp;&nbsp;&nbsp;&nbsp;console.log( "called at " + this.now + " seconds.");
-				};
-
-				var times = {
-				&nbsp;&nbsp;&nbsp;&nbsp;"start": 2,
-				&nbsp;&nbsp;&nbsp;&nbsp;"interval": 5,
-				&nbsp;&nbsp;&nbsp;&nbsp;"stop": 10,
-				&nbsp;&nbsp;&nbsp;&nbsp;"maxIntervals":3,
-				&nbsp;&nbsp;&nbsp;&nbsp;"duration": 2
-				};
-				
-				
-				t.<span class="var">loop</span>("test", test).<span class="var">for</span>( times );
-
-		</div>
-		<div class="section">
-			<h2 id="after">after()</h2>
-			<p>
-				Triggers a function after a specific amount of seconds from when after() is called. after() is a shorthand for what is a probable usage.
-			</p>
-			<h3> Syntax </h3>
-
-			<div class="example">
-				Timeline.after(<span class="var">seconds</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
-			</div>
-			<p>
-				All the parameters of after() are the same as <a href="at">at()</a>, except that after() add the <span class="var">seconds</span> passed in to the current clock time and triggers it then.
-			</p>
-		</div>
-		<div class="section">
-			<h2 id="remove">remove()</h2>
-			<p>
-				Removes events set by <a href="#on">on()</a>, <a href="#at">at()</a>, and <a href="#loop">loop()</a>. 
-			</p>
-			<h3> Syntax </h3>
-
-			<div class="example">
-				Timeline.remove( <span class="var">event</span> );
-			</div>
-			<p> Where <span class="var">event</span> is an <span class="var">eventName</span> set by <a href="#on">on()</a>,
-				<br /><br /> <strong>or</strong> <br /><br />
-				where <span class="var">event</span> is a time (in seconds) that an event was set to trigger with <a href="#at">at()</a>,
-				<br /><br /> <strong>or</strong> <br /><br />
-				where <span class="var">event</span> is the unique name of a loop (added using <a href="#loop">loop()</a> method) 
-			</p>
-			<p> <em> It is recomended to not have matching event names with on() and loop(). If this advice is disregarded, note that it will first remove the event set by on() before the looping event. If you feel the need to have matching names, consider a naming scheme such as loops being suffixed with the '-loop'.</em> Example: 'render-loop'.</p>
-
-		</div>
-
-		<div class="section">
-			<h2 id="defer">defer()</h2>
-
-			<p>
-				Waits for the current stack to clear before calling a function. Uses window.setTimeout().</a>. 
-			</p>
-
-			<h3> Syntax </h3>
-
-			<div class="example">
-				Timeline.defer( <span class="var">callback</span> );
-			</div>
-			<p>
-				<span class="code type">Function</span>  <span class="code var">callback</span>
-			</p>
-			<p class="description"> 
-				The function to be deferred.
-			</p>
-
-		</div>
-
-		<div class="section">
-			<h1 id ="default_events">Built-In Events</h1>
-			<p>
-				Events that may make your life easier.
-			</p>
-			<p> <a href="#default_events">Link to this section </a> <p>
-		</div>
-
-		<div class="section">
-
-		<h2> A small list of built-in events </h2>
-		<p class="description">
-		 These events are automatically triggered, but can alse be triggered using the <a href="#trigger">trigger()</a> method.
-		</p>
-		<ol class="unstyled">
-		<li> '<span class="var">on:tick</span>' </li>
-		<li> '<span class="var">on:start</span>' </li>
-		<li> '<span class="var">after:start</span>'</li>
-		<li> '<span class="var">on:pause</span>' </li>
-		<li> '<span class="var">on:resume</span>' </li>
-
-		</ol>
-
-		</div>
-
-
-		</div><!-- end of wrapper -->
-
-	</div>
+  <div class="sections">
+    <h4> Sections </h4>
+    <ol class="unstyled">
+
+      <li><a href="#synopsis">Synopsis </a></li>      
+      <li><a href="#usage">Usage </a></li>
+      <li class="label"> Clock Methods </li>
+      <li><a href="#start">start() </a></li>
+      <li><a href="#pause">pause() </a></li>
+      <li><a href="#reset">reset() </a></li>
+      <li><a href="#resume">resume() </a></li>
+      <li><a href="#elapsedTime">elapsedTime() </a></li>
+      <li><a href="#log">log() </a></li>
+      <li class="label"> Event Methods </li>
+
+      <li><a href="#on">on() </a> &amp; <a href="#trigger">trigger() </a></li>
+      <li><a href="#at">at() </a></li>
+      <li><a href="#loop">loop().for() </a></li>
+      <li><a href="#after">after() </a></li>
+      <li><a href="#remove">remove() </a></li>
+      <li><a href="#defer">defer() </a></li>
+      <li><a href="#viewEvents">viewEvents()</a></li>
+
+      <li class="label"> Other </li>
+      <li><a href="#default_events"> Default Events</a> </li>
+    </ol>
+
+  </div>
+  <div class="wrapper">
+    <div class="section">
+      <h1>ClockEventAggreggator Documentation</h1>
+      <p>Looking for dogumentation? <a href="#" onclick="dogefy()">Click here</a>.</p>
+    </div>
+    <div class="section">
+    <h2 id="synopsis"> Synopsis </h2>
+    <p>
+      
+    </p>
+    </div>
+    <div class="section">
+      <h2 id="usage">Usage</h2>
+      <p>
+        Instantiation is like any other use of '<span class="red code">new</span>'.
+      </p>
+
+      <p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator( [options] );</div>
+      </p>
+
+      <h4>Arguments:</h4>
+      <p> All arguments should be passed in wrapped in an object, like so: </p>
+      <p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator({
+          'useRAF': true,
+          'autostart': false,
+          'bindToFunction':false
+        }); 
+        </div>
+      </p>
+      <p class="arg">
+        <span class="type">boolean</span> <span class="code">useRAF</span>
+      </p>
+      <p>
+        Decides if requestAnimationFrame will be used. requestAnimationFrame polyfills to fallback onto window.setInterval(). <br /> See requestAnimationFrame  <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/">polyfill</a>.
+      </p>
+      <p>
+        Default is <span class="red code">true</span>.
+      </p>
+      <p class="arg">
+        <span class="type">boolean</span> <span class="code">autostart</span>
+      </p>
+      <p>
+        If true, the clock will start upon instantiation.
+      </p>
+      <p >Default is <span class="red">false</span>.</p>
+
+      <p class="arg">
+        <span class="type">boolean</span> <span class="code">bindToFunction</span>
+      </p>
+      <p>
+        Decides if wait() method is bound to the Function prototype. wait() is a delegated form of <a href="after">after()</a>
+      </p>
+      <p>
+        Default is <span class="red code">false</span>.
+      </p>
+    </div>
+
+    <!-- Section 1 -->
+
+    <div class="section">
+      <h1 id ="clock_methods">Clock Methods</h1>
+      <p>
+        Methods related to using the internal clock. Clock methods don't take parameters.
+      </p>
+      <p> <a href="#clock_methods">Link to this section </a> <p>
+    </div>
+
+
+
+    <div class="section">
+      <h2 id="start">start()</h2>
+      <p>Starts the clock. start() is chainable.</p>
+
+      <p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start();
+        </div>
+      </p>
+    </div>
+    <div class="section">
+      <h2 id="pause">pause()</h2>
+      <p>Pauses the clock. Timed events won't fire, but events set with <a href="#on">on()</a> can still be triggered. pause() is chainable.</p>
+
+      <p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start();
+          <span class="comment">/* ... */</span>
+          clock.pause();
+        </div>
+      </p>
+    </div>
+    <div class="section">
+      <h2 id="reset">reset()</h2>
+      <p>Completely resets the clock and <strong>all events</strong>, then starts the clock again. reset() is chainable.</p>
+
+
+      <p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start();
+
+          <span class="comment">/* ... */</span>
+
+          clock.pause();
+        </div>
+      </p>
+    </div>
+    <div class="section">
+      <h2 id="resume">resume()</h2>
+      <p> Resumes the clock after being paused. Chainable.</p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start().pause();
+
+          <span class="comment">/* ... */</span>
+
+          clock.resume();
+        </div>
+    </div>
+    <div class="section">
+      <h2 id="elapsedTime">elapsedTime()</h2>
+      <p>
+        Returns the amount of time that the clock has been running <strong>in seconds</strong>. <em>Not</em> chainable.
+      </p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start();
+
+          <span class="var">var</span> x = clock.elapsedTime(); // x -> 0
+
+        </div>
+    </div>
+    <div class="section">
+      <h2 id="log">log()</h2>
+      <p>
+        Outputs the amount of internal ticks, elapsed seconds, and a rough estimation of the Frames per Second. If <span class="code">debug = true</span>,.log() will be called every tick, so <span class="code">console.clear()</span> is used to keep the <span class="code">console.clear()</span>.
+      </p>
+
+
+      <p> To turn on the clock's logging per tick, use </p>
+      <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start();
+
+          <span class="var">clock.debug = true;</span>
+
+      </div>
+
+      <p> Screenshot of console output: </p>
+      <p> <img src="consoleclear_example.png" /> </p>
+    </div>
+
+
+    <div class="section">
+      <h1 id="event_methods">Event Methods </h1>
+      <p> Methods that interact with the event aggregator, trigger at specific timed events, or loop.</p>
+      <p> <a href="#event_methods">Link to this section </a> <p>
+    </div>
+
+    <div class="section">
+      <h2 id="on">on()</h2>
+      <p>
+        Used to create named triggerable events. See <a href="#trigger">trigger()</a> for triggering.
+      </p>
+      <h3> Syntax </h3>
+
+      <div class="example">
+        ClockEventAggreggator.on(<span class="var">eventName</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
+      </div>
+      <p>
+        <span class="type">String</span>  <span class="code var">eventName</span>
+      </p>
+      <p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
+
+      <p>
+        <span class="type">Function</span>  <span class="code var">callback</span>
+      </p>
+      <p class="description"> The function to be called when the event is triggered.</p>
+
+      <p><span class="type">Array</span> <span class="code var">args</span></p>
+      <p class="description"> The arguments that should be passed into the triggered function when called. Should be passed as an array: </p>
+      <p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
+      <p><span class="type">Object</span>  <span class="code var">scope</span> </p>
+      <p class="description">
+        The context that the triggered function will be called in. defaults to the ClockEventAggreggator object.
+      </p>
+      <h4> Examples </h4>
+
+      <div class="example">
+        <span class="var">var</span> clock = new ClockEventAggreggator();
+
+
+        // basic usage, assume  the function 'wow' is declared
+        clock.on("wrong-dialogue-confirmation", wow)
+
+      </div><br />
+      <div class="example">
+        // Using all parameters:
+        <span class="var">var</span> stopClockAndAddScore = function(x, y){
+          this.pause(); // See <a href="#pause">pause()</a>
+          console.log(this, x, y); // ClockEventAggreggator object, 184, 16
+        };
+
+        clock.on("error", stopClockAndAddScore, t, [184,16]); // when triggered, will pause clock and return 200
+
+      </div>
+    </div>
+    <div class="section">
+      <h2 id="trigger">trigger()</h2>
+      <p>
+        Triggers events set by <a href="#on">on()</a>.
+      </p>
+      <h3> Syntax </h3>
+
+      <div class="example">
+        ClockEventAggreggator.trigger(<span class="var">eventName</span>);
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 id="at">at()</h2>
+      <p>
+        Used to create events that trigger at specific clock times.<br /> The 'clock time' refers to the internal clock kept by the ClockEventAggreggator object.
+      </p>
+      <h3> Syntax </h3>
+
+      <div class="example">
+
+        ClockEventAggreggator.at(<span class="var">elapsedTime</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
+      </div>
+      <p>
+        <span class="type">Integer</span>  <span class="code var">elapsedTime</span>
+      </p>
+      <p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
+
+      <p>
+        <span class="type">Function</span>  <span class="code var">callback</span>
+      </p>
+      <p class="description"> The function to be called when the clock reaches the elapsed clock time.</p>
+
+      <p><span class="type">Array</span> <span class="code var">args</span></p>
+      <p class="description"> The arguments that should be passed into the triggered function when called. Should be passed as an array: </p>
+      <p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
+
+      <p><span class="type">Object</span>  <span class="code var">scope</span> </p>
+      <p class="description"> The context that the triggered function will be called in. defaults to the ClockEventAggreggator object.</p>
+
+      <h4> Examples </h4>
+
+      <div class="example">
+        <span class="var">var</span> clock = new ClockEventAggreggator();
+        
+        clock.at(10, (function(){
+        &nbsp;&nbsp;&nbsp;&nbsp;alert("Hello!");
+        }));
+      </div>
+    </div>
+    <div class="section">
+      <h2 id="loop">loop() and loop().for()</h2>
+      <p>
+        Used to create events that loop at specific clock intervals.<br /> The 'clock time' refers to the internal clock kept by the ClockEventAggreggator object.
+      </p>
+      <h3> Syntax </h3>
+
+      <div class="example">
+
+        ClockEventAggreggator.loop(<span class="var">loopName</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
+      </div>
+      <p>
+        <span class="red">Unique</span> <span class="type">String</span>  <span class="code var">loopName</span>
+      </p>
+      <p class="description">A <strong>Unique</strong> name to maintain the loop externally. Can be any string allowed as a javascript object property. <em> It is recomended to not have matching on() and loop() event names. See <a href="#remove">remove()</a> for more details. </em></p>
+      
+      <h4>loop() </h4>
+      <p>
+        <span class="type">Function</span>  <span class="code var">callback</span>
+      </p>
+      <p class="description"> 
+        The function to be called when the clock reaches the elapsed clock time.
+      </p>
+      <p>
+        <span class="type">Object</span>  <span class="code var">scope</span>
+      </p>
+      <p class="description">
+        The context that the triggered function will be called in. defaults to the ClockEventAggreggator object.
+      </p>
+      <p>
+        <span class="type">Array</span> <span class="code var">args</span>
+      </p>
+      <p class="description">
+       The arguments that should be passed into the triggered function when called. Should be passed as an array: 
+      </p>
+      <p><span class="code"> [ arg1, arg2, arg3, ...]</span></p>
+      <h4> for() </h4>
+      <p><span class="type">Object</span>  <span class="code var">options</span> </p>
+      <p class="description"> The options are passed in as an object.</p><br />
+      <p><strong> The options consist of: </strong></p> <br />
+      <p>
+        <span class="type">Integer</span>  <span class="code var">options.start</span>
+      </p>
+      <p class="description"> The clock time that the loop should begin it's intervals. Defaults to the current clock time (Immediately).</p>
+      <p>
+        <span class="type">Integer</span>  <span class="code var">options.stop</span>
+      </p>
+      <p class="description"> 
+        The clock time that the loop should stop it's intervals. Defaults to <span class="type">Infinity</span>.
+      </p>
+      <p>
+        <span class="type">Integer</span>  <span class="code var">options.interval</span>
+      </p>
+      <p class="description"> 
+        The amount of clock time that the loop will have between it's intervals. Defaults to 9999.
+      </p>
+      <p>
+        <span class="type">Integer</span>  <span class="code var">options.maxIntervals</span>
+      </p>
+      <p class="description"> 
+        A hard limit on the amount of times the loop may iterate. Defaults to <span class="type">Infinity</span>.
+      </p>
+      <p>
+        <span class="type">Integer</span>  <span class="code var">options.duration</span>
+      </p>
+      <p class="description"> 
+        The duration of the loop's callback. Defaults to 0. Increases the time between intervals, rather than taking the duration out of the interval times.
+      </p>
+
+      <h4> Examples </h4>
+
+      <div class="example">
+        <span class="var">var</span> clock = new ClockEventAggreggator();
+
+
+        // timed loop test
+
+        <span class="var">var</span> test = function(){
+        &nbsp;&nbsp;&nbsp;&nbsp;console.log( "called at " + this.now + " seconds.");
+        };
+
+        var times = {
+        &nbsp;&nbsp;&nbsp;&nbsp;"start": 2,
+        &nbsp;&nbsp;&nbsp;&nbsp;"interval": 5,
+        &nbsp;&nbsp;&nbsp;&nbsp;"stop": 10,
+        &nbsp;&nbsp;&nbsp;&nbsp;"maxIntervals":3,
+        &nbsp;&nbsp;&nbsp;&nbsp;"duration": 2
+        };
+        
+        
+        clock.<span class="var">loop</span>("test", test).<span class="var">for</span>( times );
+
+    </div>
+    <div class="section">
+      <h2 id="after">after()</h2>
+      <p>
+        Triggers a function after a specific amount of seconds from when after() is called. after() is a shorthand for what is a probable usage.
+      </p>
+      <h3> Syntax </h3>
+
+      <div class="example">
+        ClockEventAggreggator.after(<span class="var">seconds</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
+      </div>
+      <p>
+        All the parameters of after() are the same as <a href="at">at()</a>, except that after() add the <span class="var">seconds</span> passed in to the current clock time and triggers it then.
+      </p>
+    </div>
+    <div class="section">
+      <h2 id="remove">remove()</h2>
+      <p>
+        Removes events set by <a href="#on">on()</a>, <a href="#at">at()</a>, and <a href="#loop">loop()</a>. 
+      </p>
+      <h3> Syntax </h3>
+
+      <div class="example">
+        ClockEventAggreggator.remove( <span class="var">event</span> );
+      </div>
+      <p> Where <span class="var">event</span> is an <span class="var">eventName</span> set by <a href="#on">on()</a>,
+        <br /><br /> <strong>or</strong> <br /><br />
+        where <span class="var">event</span> is a time (in seconds) that an event was set to trigger with <a href="#at">at()</a>,
+        <br /><br /> <strong>or</strong> <br /><br />
+        where <span class="var">event</span> is the unique name of a loop (added using <a href="#loop">loop()</a> method) 
+      </p>
+      <p> <em> It is recomended to not have matching event names with on() and loop(). If this advice is disregarded, note that it will first remove the event set by on() before the looping event. If you feel the need to have matching names, consider a naming scheme such as loops being suffixed with the '-loop'.</em> Example: 'render-loop'.</p>
+
+    </div>
+
+    <div class="section">
+      <h2 id="defer">defer()</h2>
+
+      <p>
+        Waits for the current stack to clear before calling a function. Uses window.setTimeout().</a>. 
+      </p>
+
+      <h3> Syntax </h3>
+
+      <div class="example">
+        ClockEventAggreggator.defer( <span class="var">callback</span> );
+      </div>
+      <p>
+        <span class="type">Function</span>  <span class="code var">callback</span>
+      </p>
+      <p class="description"> 
+        The function to be deferred.
+      </p>
+
+    </div>
+
+    <div class="section">
+      <h2 id="viewEvents">viewEvents()</h2>
+
+      <p>
+        Returns the internal events object. Primarily public for analyzing currently set events, adding events to the events object manually will most likely break things.
+      </p>
+
+      <h3> Syntax </h3>
+
+      <div class="example">
+        <span class="var">var</span> events = ClockEventAggreggator.viewEvents(); // { nominal:{}, ordinal: [], loops: {} }
+      </div>
+
+    </div>
+
+    <div class="section">
+      <h1 id ="other">Other Functionality</h1>
+      <p>
+        Things that may make your life easier.
+      </p>
+      <p> <a href="#other">Link to this section </a> <p>
+    </div>
+
+    <div  class="section">
+
+    <h2 id="default_events"> Built-In Events </h2>
+    <p class="description"> 
+    A small list of built-in events for use with the <a href="on">on()</a> method. <br />
+     These events are automatically triggered when they happen, but can alse be triggered manually using the <a href="#trigger">trigger()</a> method.
+    </p>
+    <ol class="unstyled">
+      <li> '<strong>tick</strong>' - triggers <em> every </em> tick (Roughly every 17ms).</li> 
+      <li> '<strong>start</strong>' - Triggers at the end of the .start(), after the clock has started.</li>
+      <li> '<strong>before:start</strong>' - Triggers before the clock has started.</li>
+      <li> '<strong>pause</strong>' </li>
+      <li> '<strong>resume</strong>' </li>
+    </ol>
+    <h4>Example Usages:</h4>
+    <div class="example">
+      <span class="var">var</span> clock = new ClockEventAggreggator(),
+                            &nbsp;&nbsp;&nbsp;&nbsp;callbackAlert = function() {
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.alert("Event Happened.");
+                            &nbsp;&nbsp;&nbsp;&nbsp;};
+                            
+      clock.start();
+      clock.on("pause", callbackAlert);
+
+      /* ... */
+
+      clock.pause(); // -> triggers 'callbackAlert' function<br />
+    </div>
+
+
+    </div><!-- end of wrapper -->
+
+  </div>
 </body>
 </html>

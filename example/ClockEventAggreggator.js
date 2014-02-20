@@ -218,14 +218,14 @@
 
       tickCallee = tickLoop.bind(this);
 
-      this.trigger("start");
+      this.trigger("before:start");
       var now = new Date().getTime();
 
       this.startTime = startTime = now;
       running = true;
       this.tick( now );
 
-      this.trigger("after:start");
+      this.trigger("start");
       return this;
     };
 

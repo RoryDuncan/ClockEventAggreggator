@@ -52,7 +52,7 @@
 
     /*  Timeline related variables  */
 
-    var defaults = {useRAF: false, tickInterval: 16, autostart: false},
+    var defaults = {useRAF: true, tickInterval: 16, autostart: false},
         options = extend(defaults, args),
         ticks = 0,
         lastTick = 0,       // used to calculate the delta
@@ -433,7 +433,7 @@
 
       bindToFunction:
 
-      Attach <function>.wait method to the Function.prototype,
+      Attach 'wait' method to the Function.prototype,
       delegating to the timeline's <this>.after() method.
       Useful? Could be. Invasive of global prototypes? Def.
 

@@ -52,7 +52,7 @@
 
     /*  Timeline related variables  */
 
-    var defaults = {useRAF: false, tickInterval: 16, autostart: false},
+    var defaults = {useRAF: true, tickInterval: 16, autostart: false},
         options = extend(defaults, args),
         ticks = 0,
         lastTick = 0,       // used to calculate the delta

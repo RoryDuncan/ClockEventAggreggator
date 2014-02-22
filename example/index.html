@@ -6,10 +6,15 @@
 	The Teal hand shows <span style="color:#088"> every other Tick. <br /></span>
 	The red hand shows <span style="color:#f44">seconds. <br /></span>
 	The black hand is <span style="color:#000"> minutes. <br /></span>
-
+	<p>
+		<label name="clockspeed">clock speed</label>
+		<input name="clockspeed" id="clockspeed" value="1" type="range" min="-10" step="0.25" max="10"></input>
+		<span id="clockvalue">1</span>
+	</p>
 	<canvas id="renderExample">
 
 	</canvas>
+
 </body>
 <script src="ClockEventAggreggator.js"></script>
 <script src="example.js"></script>

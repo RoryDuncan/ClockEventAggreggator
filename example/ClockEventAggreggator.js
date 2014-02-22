@@ -60,6 +60,7 @@
         elapsedTime = 0,
         elapsedSeconds = 0, // to be refactored
         rAFID = null,
+        tick2N = false,
 
         delta = 0,          // the time difference between ticks, useful for adjustments 
         actualElapsedTime = 0;
@@ -71,7 +72,7 @@
         useRAF = options.useRAF,
         tickCallee = null,
 
-        clockspeed = 1;
+        clockspeed = 0.1;
         
 
 
@@ -86,16 +87,17 @@
     /*  Internal Functions */
 
     //  clock's tick mechanism
-    var tick = function(_lastTick) {
+    var tick = function() {
       
       var now = new Date().getTime(); //cache
       if (!running) return;
       
       ticks += 1 * clockspeed;
-      if (this.debug) this.log();
+      tick2N = !tick2N;
+      if (this.debug && tick2N) this.log();
 
       
-      this.delta = delta = now - (_lastTick === undefined ? lastTick : _lastTick);
+      this.delta = delta = now - lastTick;
 
       lastTick = now;
 
@@ -113,7 +115,7 @@
       this.trigger("tick");
 
       
-      rAFID = tickCallee(delta);
+      rAFID = tickCallee();
 
       return ticks;
     };
@@ -223,7 +225,8 @@
 
       this.startTime = startTime = now;
       running = true;
-      this.tick( now );
+      lastTick = now;
+      this.tick();
 
       this.trigger("start");
       return this;
@@ -282,6 +285,8 @@
     this.log = function() {
 
       console.clear();
+      if (useRAF) console.log("<Using requestAnimationFrame>");
+      else console.log("<Using setTimeout>");
       console.log("ticks:", ticks);
       console.log("delta:", delta);
       console.log("lastTick(should change)", ~~lastTick)

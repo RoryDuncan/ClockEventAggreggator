@@ -4,7 +4,7 @@
 
 /*** If you're just looking for ClockEventAggreggator's usage, it is used on line 109 ***/
 
-  var clock = new ClockEventAggreggator({useRAF:false, debug:true});
+  var clock = new ClockEventAggreggator({useRAF:true, debug:false});
 
     clock.start();
 
@@ -96,6 +96,13 @@ var example = function() {
       ctx.stroke();
   };
 
+  var adjustClockSpeed = function(){
+    var input = document.getElementById("clockspeed").value;
+    document.getElementById("clockvalue").innerHTML = input;
+    clock.setClockSpeed(input);
+
+  };
+
   // render is the wrapper that will call the uodates
   var render = function() {
 
@@ -104,10 +111,10 @@ var example = function() {
     updateTicksHand();
     updateSecondsHand();
     updateMinutesHand();
+    adjustClockSpeed();
+
 
   };
-
-  // start the ClockEventAggreggator
 
 
   // use the ClockEventAggreggator's "on" method

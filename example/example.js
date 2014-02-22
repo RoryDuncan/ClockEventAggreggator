@@ -4,11 +4,13 @@
 
 /*** If you're just looking for ClockEventAggreggator's usage, it is used on line 109 ***/
 
-  var clock = new ClockEventAggreggator();
+  var clock = new ClockEventAggreggator({useRAF:false, debug:true});
 
+    clock.start();
 
+console.log("Example of https://github.com/RoryDuncan/ClockEventAggreggator/")
 // a wrapper
-var example = function(){
+var example = function() {
 
   // get the canvas from the DOM
   var canvas = document.getElementById("renderExample"),
@@ -29,7 +31,7 @@ var example = function(){
       };
 
   // updateTicksHand updates the display of the 'hand' of the clock that represents ClockEventAggreggator's tick.
-  var updateTicksHand = function(){
+  var updateTicksHand = function() {
       // set the radius to 40% of the canvas's width
       var radius = canvas.width * 0.4;
 
@@ -97,6 +99,8 @@ var example = function(){
   // render is the wrapper that will call the uodates
   var render = function() {
 
+    //console.log("%cRENDERS", "background-color: #88c; padding: 1px 5px; color: #fff; border-radius: 10px; font-size: 10px; font-weight: bold; position:");
+    //console.log(clock.seconds() )
     updateTicksHand();
     updateSecondsHand();
     updateMinutesHand();
@@ -104,7 +108,7 @@ var example = function(){
   };
 
   // start the ClockEventAggreggator
-  clock.start();
+
 
   // use the ClockEventAggreggator's "on" method
   clock.on("tick", render);

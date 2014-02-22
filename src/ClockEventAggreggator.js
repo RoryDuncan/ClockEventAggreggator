@@ -59,6 +59,7 @@
         startTime = 0,
         elapsedTime = 0,
         elapsedSeconds = 0, // to be refactored
+        rAFID = null,
 
         delta = 0,          // the time difference between ticks, useful for adjustments 
         actualElapsedTime = 0;
@@ -94,10 +95,9 @@
       if (this.debug) this.log();
 
       
-      this.delta = delta = now - (lastTick || _lastTick);
+      this.delta = delta = now - (_lastTick === undefined ? lastTick : _lastTick);
 
-      
-      lastTick = _lastTick || now;
+      lastTick = now;
 
       elapsedTime += (delta * clockspeed);
 
@@ -106,14 +106,14 @@
       this.errorMargin = actualElapsedTime - elapsedTime; 
 
 
-      // one-time events take precedence over loop events.
+      // singular events take precedence over loop events.
       triggerCurrentEvents();
       triggerLoopEvents();
 
       this.trigger("tick");
 
       
-      tickCallee();
+      rAFID = tickCallee(delta);
 
       return ticks;
     };
@@ -210,10 +210,10 @@
       var tickLoop;
       //dynamically constructed function to remove an if statement inside of the tick function.
       if (useRAF === true) {
-        tickLoop = new Function(" window.requestAnimationFrame( this.tick );");
+        tickLoop = new Function(" var id = window.requestAnimationFrame( this.tick ); return id;");
       }
       else {
-        tickLoop = new Function(" window.setTimeout(this.tick, this.tickInterval);" );
+        tickLoop = new Function(" var id = window.setTimeout(this.tick, this.tickInterval);return id;" );
       }
 
       tickCallee = tickLoop.bind(this);
@@ -283,10 +283,11 @@
 
       console.clear();
       console.log("ticks:", ticks);
-      console.log("delta:", delta)
-      console.log("elapsed time:", elapsedTime);
-      console.log("elapsed seconds:", ~~(elapsedTime / 1000));
-      console.log("actual elapsed time:", actualElapsedTime);
+      console.log("delta:", delta);
+      console.log("lastTick(should change)", ~~lastTick)
+      console.log("elapsed time:", elapsedTime / 1000);
+      console.log("elapsed seconds:", ~~(elapsedTime / 10000));
+      console.log("actual elapsed time:", actualElapsedTime / 1000);
       console.warn("%cdifference (in seconds): " + (this.errorMargin / 1000), "color: #a00" );
       console.log("Ignore differences if you have called pause at any time.");
       console.log("Estimated FPS:", ~~(ticks / ( elapsedTime / 1000 )));

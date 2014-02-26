@@ -8,7 +8,8 @@
   
   body {
     margin: 0 0;
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-size:1em;
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
     background-color: #ddd;
   }
   .sections {
@@ -18,7 +19,6 @@
     top:0px;
     width: 300px;
     background-color: #fff;
-    font-family:  "Helvetica", "Arial", sans-serif;
     font-weight: lighter;
 
 
@@ -31,7 +31,6 @@
     margin: 0 auto; 
     padding: 15px 5px; 
     text-align:center;
-    font-family: "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 1.5em;
   }
   
@@ -39,11 +38,11 @@
 
   .sections ol li {
     padding:5px 5px 5px 30px;
-    font-family:"Arial"
+    font-family:"Helvetica", Arial, sans-serif;
   }
 
   .sections ol li.label {
-    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+
     font-size: 1.2em;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -101,7 +100,7 @@
   }
 
   .section h1 {
-    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    
     font-weight: lighter;
     font-size:3em;
   }
@@ -155,6 +154,7 @@
       <li><a href="#usage">Usage </a></li>
       <li class="label"> Clock Methods </li>
       <li><a href="#start">start() </a></li>
+      <li><a href="#stop">stop() </a></li>
       <li><a href="#pause">pause() </a></li>
       <li><a href="#reset">reset() </a></li>
       <li><a href="#resume">resume() </a></li>
@@ -257,6 +257,18 @@
       <p>
         <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
           clock.start();
+        </div>
+      </p>
+    </div>
+    <div class="section">
+      <h2 id="stop">stop()</h2>
+      <p>Stops the clock. stop() is chainable.</p>
+
+      <p>
+        <div class="example"><span class="var">var</span> clock = new ClockEventAggreggator();
+          clock.start();
+          /*...*/
+          clock.stop();
         </div>
       </p>
     </div>
@@ -405,12 +417,12 @@
 
       <div class="example">
 
-        ClockEventAggreggator.at(<span class="var">elapsedTime</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
+        ClockEventAggreggator.at(<span class="var">elapsedTime*</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope]</span>)
       </div>
       <p>
-        <span class="type">Integer</span>  <span class="code var">elapsedTime</span>
+        <span class="type">Integer</span> <span class="code var">elapsedTime</span>
       </p>
-      <p class="description">The name to assign to event. Can be any string allowed as a javascript object property. </p>
+      <p class="description">The name to assign to event. Can be any string allowed as a javascript object property. Multiple Elapsed times can be passed in as an array.</p>
 
       <p>
         <span class="type">Function</span>  <span class="code var">callback</span>
@@ -429,7 +441,15 @@
       <div class="example">
         <span class="var">var</span> clock = new ClockEventAggreggator();
         
-        clock.at(10, (function(){
+        clock.at(1000, (function(){
+        &nbsp;&nbsp;&nbsp;&nbsp;alert("Hello!");
+        }));
+      </div>
+      <h3> Passed in array</h3>
+      <div class="example">
+        <span class="var">var</span> clock = new ClockEventAggreggator();
+        
+        clock.at([1000, 5000, 10000], (function(){
         &nbsp;&nbsp;&nbsp;&nbsp;alert("Hello!");
         }));
       </div>
@@ -538,7 +558,7 @@
         ClockEventAggreggator.after(<span class="var">seconds</span>, <span class="var">callback</span> [, <span class="var">args</span>, <span class="var">scope</span>]).for(<span class="var">options</span>)
       </div>
       <p>
-        All the parameters of after() are the same as <a href="at">at()</a>, except that after() add the <span class="var">seconds</span> passed in to the current clock time and triggers it then.
+        All the parameters of after() are the same as <a href="at">at()</a>, except that after() adds the <span class="var">milliseconds</span> passed in to the current clock time and triggers it then.
       </p>
     </div>
     <div class="section">

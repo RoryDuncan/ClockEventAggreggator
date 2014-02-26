@@ -1,19 +1,63 @@
 <html>
+<style type="text/css">
 
+body {
+	color: #fff;
+	background-color: #111;
+	font-family: "Arial", sans-serif;
+}
+div {
+	max-width:50%;
+	float:left;
+	padding: 10px 10px;
+	margin: 10px 10px;
+	
+}
+canvas {border-radius: 50%; background-color: #fff;}
+
+#debug {
+	color: #0a4;
+	font-family: monospace;
+	background-color: #000;
+	min-width: 40%;
+	border: 1px solid #aaa;
+}
+
+</style>
 
 <body>
 	<h1> Example of Canvas Rendering. </h1>
-	The Teal hand shows <span style="color:#088"> every other Tick. <br /></span>
-	The red hand shows <span style="color:#f44">seconds. <br /></span>
-	The black hand is <span style="color:#000"> minutes. <br /></span>
-	<p>
-		<label name="clockspeed">clock speed</label>
-		<input name="clockspeed" id="clockspeed" value="1" type="range" min="-10" step="0.25" max="10"></input>
-		<span id="clockvalue">1</span>
-	</p>
-	<canvas id="renderExample">
+	<div id="debug"><h3>Loop Log </h3></div>
+	<div>
+		<p id="time">wow</p>
+		<div>	
 
-	</canvas>
+			<button id="start">Start</button>
+			<button id="stop" disabled> Stop </button>
+			<button id="pause" disabled>Pause</button>
+			<button id="resume" disabled> Resume </button>
+
+			<br />
+			<p>
+				<label name="clockspeed">clock speed</label>
+				<input name="clockspeed" id="clockspeed" value="1" type="range" min="-2" step="0.1" max="2"></input>
+				<span id="clockvalue">1</span>
+			</p>
+			
+		</div>
+
+		<div>
+			<span style="color:#088"> The Teal hand shows every other Tick. <br /></span>
+			<span style="color:#f44"> The red hand shows seconds.<br /></span>
+			<span style="color:#fff"> The black hand is minutes. <br /></span>
+		</div>
+
+		<div></div>
+		<div>
+			<canvas id="renderExample">Wow</canvas>
+		</div>
+	</div>
+
 
 </body>
 <script src="ClockEventAggreggator.js"></script>
